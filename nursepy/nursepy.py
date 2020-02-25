@@ -8,7 +8,7 @@ from sklearn.compose import ColumnTransformer
 
 def preproc(X_train, X_test=None, auto=False, OHE=[], standard_scale=[], robust_scale=[], numerical_impute=[], categegorical_impute=[], label_encode={}):
     """
-    Prerocesses data frames, including onehot encoding, scaling, and imputation, and label encoding
+    Preprocesses data frames, including onehot encoding, scaling, and imputation, and label encoding
 
     Parameters
     ----------
