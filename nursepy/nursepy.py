@@ -7,8 +7,11 @@ from sklearn.compose import ColumnTransformer
 
 
 def preproc(X_train, X_test=None, auto=False, OHE=[], standard_scale=[], robust_scale=[], numerical_impute=[], categegorical_impute=[], label_encode={}):
-    """Prerocesses data frames, including onehot encoding, scaling, and imputation, and label encoding
-    Keyord arguments:
+    """
+    Prerocesses data frames, including onehot encoding, scaling, and imputation, and label encoding
+
+    Parameters
+    ----------
     X_train (pd dataframe): X_train dateframe - Required
     X_test (pd dataframe): X_test dataframe - Default None
     auto (bool): If true we will automatically decide how to process columns, you must not use the manual settings (standard_scale, robust_scale etc.) if auto is set to true. - Default False
@@ -20,11 +23,13 @@ def preproc(X_train, X_test=None, auto=False, OHE=[], standard_scale=[], robust_
     label_encode (dict): Keys in the dict should be the column names to transform, the values should be lists that
     contain the various values in the column, the order of the values will determine the encoding (1st element will be 0 etc.). - Default {}
 
-    Returns:
+    Returns
+    -------
     processed pandas dataframes. X_train, X_test
 
-    Example:
-    X_train, X_test = preproc(X_train, X_test, auto=True)
+    Examples
+    --------
+    >>> X_train, X_test = preproc(X_train, X_test, auto=True)
     """
 
     # automatically choose which columns to scale and encode
