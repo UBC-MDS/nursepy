@@ -43,3 +43,4 @@ def test_PreprocAuto():
     assert(len(X_train_new.columns) == len(X_train.columns) + 1)
     # TODO add check to make sure the other columns are scaled
     # TODO add check to make sure that OHE naming is proper
+    # TODO test that original df's are not mutated, this is probably failing
