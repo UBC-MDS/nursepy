@@ -11,13 +11,13 @@ def preproc(X_train, X_test=None, auto=False, OHE=[], standard_scale=[], robust_
     Keyord arguments:
     X_train (pd dataframe): X_train dateframe - Required
     X_test (pd dataframe): X_test dataframe - Default None
-    auto (bool): If true we will automatically decide how to process columns
-    OHE: Array of columns to be processed with sklearn OneHotEncoder, this accepts non numerical categorical rows without need for label encoding. - Default []
-    standard_scale: list. List of columns to be processes with standard scalar. - Defualt []
-    robust_scale: list. List of columns to be preprocessed with robust scalar. - Defualt []
-    numerical_impute: list. list of column names that should be imputed using mean method. - Default []
-    categorical_impute: list. list of column names that should be imputed to 'missing'. - Default []
-    label_encode: dict. Keys in the dict should be the column names to transform, the values should be lists that
+    auto (bool): If true we will automatically decide how to process columns, you must not use the manual settings (standard_scale, robust_scale etc.) if auto is set to true. - Default False
+    OHE (list): List  of columns to be processed with sklearn OneHotEncoder, this accepts non numerical categorical rows without need for label encoding. - Default []
+    standard_scale (list): List of columns to be processes with standard scalar. - Defualt []
+    robust_scale (list): List of columns to be preprocessed with robust scalar. - Defualt []
+    numerical_impute (list): list of column names that should be imputed using mean method. - Default []
+    categorical_impute (list): list of column names that should be imputed to 'missing'. - Default []
+    label_encode (dict): Keys in the dict should be the column names to transform, the values should be lists that
     contain the various values in the column, the order of the values will determine the encoding (1st element will be 0 etc.). - Default {}
 
     Returns:
@@ -38,12 +38,10 @@ def preproc(X_train, X_test=None, auto=False, OHE=[], standard_scale=[], robust_
             raise Exception(
                 'You cannot manually set categegorical_impute when setting auto to true')
         X_num = X_train.select_dtypes(include=['float64', 'int64'])
-        standard_sclale = X_num.columns
+        standard_scale = X_num.columns.values
         X_cat = X_train.select_dtypes(
             include=['object', 'bool', 'category'])
-        OHE = X_cat.columns
-        robust_scale, categegorical_impute, numerical_impute = [], [], []
-        categegorical_impute = {}
+        OHE = X_cat.columns.values
         transformer = ColumnTransformer(
             transformers=[
                 ('cat_imputer',
