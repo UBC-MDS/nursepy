@@ -31,7 +31,7 @@ The package includes the following three functions:
 |--------|-----|------|-----------|
 |`eda`|- a pandas dataframe|- a python dictionary|- Dictionary that contains histogram and summary statistics for each column|
 |`impute`|- a pandas dataframe|- a pandas dataframe with imputed values|- Functionality for automatic imputation detection and user defined imputation method selection|
-|`preprocess`|- a pandas dataframe|- a pandas dataframe with preprocessed features|- Functionality for automatic feature preprocessing detection and user defined feature preprocessing|  
+|`preproc`|- a pandas dataframe|- a pandas dataframe with preprocessed features|- Functionality for automatic feature preprocessing detection and user defined feature preprocessing|  
 
 
 ### Python Ecosystem  
