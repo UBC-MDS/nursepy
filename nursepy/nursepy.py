@@ -4,7 +4,7 @@ import altair as alt
 from collections import defaultdict
 from sklearn.pipeline import Pipeline
 from sklearn.impute import SimpleImputer
-from sklearn.preprocessing import StandardScaler, OneHotEncoder, LabelEncoder, StandardScaler, RobustScaler
+from sklearn.preprocessing import OneHotEncoder, LabelEncoder, StandardScaler, RobustScaler
 from sklearn.compose import ColumnTransformer
 
 
@@ -15,7 +15,7 @@ def eda(input_data):
     Parameters
     ----------
     input_data: pandas.DataFrame
-        input dataframe to be analyzed
+        input data frame to be analyzed
 
     Returns
     -------
@@ -24,7 +24,6 @@ def eda(input_data):
 
     Examples
     --------
-    >>> from nursepy import eda
     >>> np.random.seed(0)
     >>> input_data = pd.DataFrame(np.random.randn(10, 1))
     >>> input_data.columns = ['my_attribute']
@@ -41,7 +40,6 @@ def eda(input_data):
               75%     1.365244
               max     1.867558}}
     """
-
     eda_summary = defaultdict(dict)
 
     # for each column, calculate altair histogram and descriptive statistics
