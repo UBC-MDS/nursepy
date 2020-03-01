@@ -1,4 +1,3 @@
-
 ## Contributing
 
 Contributions are welcome, and they are greatly appreciated! Every little bit
@@ -8,16 +7,15 @@ You can contribute in many ways:
 
 ## Types of Contributions
 
-
 ### Report Bugs
 
-Report bugs at https://github.com/evhend/nursepy/issues.
+Report bugs at https://github.com/UBC-MDS/nursepy/issues.
 
 If you are reporting a bug, please include:
 
-* Your operating system name and version.
-* Any details about your local setup that might be helpful in troubleshooting.
-* Detailed steps to reproduce the bug.
+- Your operating system name and version.
+- Any details about your local setup that might be helpful in troubleshooting.
+- Detailed steps to reproduce the bug.
 
 ### Fix Bugs
 
@@ -37,13 +35,13 @@ articles, and such.
 
 ### Submit Feedback
 
-The best way to send feedback is to file an issue at https://github.com/evhend/nursepy/issues.
+The best way to send feedback is to file an issue at https://github.com/UBC-MDS/nursepy/issues.
 
 If you are proposing a feature:
 
-* Explain in detail how it would work.
-* Keep the scope as narrow as possible, to make it easier to implement.
-* Remember that this is a volunteer-driven project, and that contributions
+- Explain in detail how it would work.
+- Keep the scope as narrow as possible, to make it easier to implement.
+- Remember that this is a volunteer-driven project, and that contributions
   are welcome :)
 
 ## Get Started!
@@ -54,38 +52,38 @@ Ready to contribute? Here's how to set up `nursepy` for local development.
 
 2. Clone your fork locally:
 
-	```
-	git clone git@github.com:your_name_here/nursepy.git
-	```
+   ```
+   git clone git@github.com:your_name_here/nursepy.git
+   ```
 
 3. Install your local copy with Poetry, this is how you set up your fork for local development:
 
-	```
-	cd nursepy/
-	poetry install
-	```
+   ```
+   cd nursepy/
+   poetry install
+   ```
 
 4. Create a branch for local development:
 
-	```
-	git checkout -b name-of-your-bugfix-or-feature
-	```
+   ```
+   git checkout -b name-of-your-bugfix-or-feature
+   ```
 
-   	Now you can make your changes locally.
+   Now you can make your changes locally.
 
 5. When you're done making changes, check that your changes pass the tests by running pytest
 
-	```
-	poetry run pytest
-	```
+   ```
+   poetry run pytest
+   ```
 
 6. Commit your changes and push your branch to GitHub:
 
-	```
-	git add .
-	git commit -m "Your detailed description of your changes."
-	git push origin name-of-your-bugfix-or-feature
-	```
+   ```
+   git add .
+   git commit -m "Your detailed description of your changes."
+   git push origin name-of-your-bugfix-or-feature
+   ```
 
 7. Submit a pull request through the GitHub website.
 
@@ -97,7 +95,7 @@ Before you submit a pull request, check that it meets these guidelines:
 2. If the pull request adds functionality, the docs should be updated. Put
    your new functionality into a function with a docstring, and add the
    feature to the list in README.md.
-3. The pull request should work for Python 3.7 & 3.8. Check https://github.com/evhend/nursepy/pulls and make sure that the tests pass for all supported Python versions.
+3. The pull request should work for Python 3.7 & 3.8. Check https://github.com/UBC-MDS/nursepy/pulls and make sure that the tests pass for all supported Python versions.
 
 ## Tips
 
@@ -111,12 +109,9 @@ py.test tests.test_nursepy
 
 A reminder for the maintainers on how to deploy:
 
-- Ensure the following secrets are recorded on GitHub:
-	- CODECOV_TOKEN	
-	- PYPI_USERNAME
- 	- PYPI_PASSWORD	
+- Ensure the following secrets are recorded on GitHub: - CODECOV_TOKEN - PYPI_USERNAME - PYPI_PASSWORD
 
- GitHub Actions should build and deploy to testPyPI when a pull request is merged into master.
+GitHub Actions should build and deploy to testPyPI when a pull request is merged into master.
 
 ## Code of Conduct
 
