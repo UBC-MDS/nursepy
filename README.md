@@ -48,11 +48,11 @@ However, the functions herein streamline and automate the front-end machine lear
 
 ---
 
-- numpy
-- pandas
-- sklearn
-- altair
-- collections
+- numpy==1.18.1
+- pandas==0.25.3
+- sklearn==0.0
+- altair==3.2.0
+- pytest==5.3.2
 
 ### Usage
 
