@@ -1,4 +1,4 @@
-from nursepy import nursepy
+from nursepy import preproc
 from sklearn.datasets import load_boston, load_iris, load_wine
 import numpy as np
 import pandas as pd
@@ -38,7 +38,7 @@ def test_PreprocAuto():
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=0.2)
     X_train_copy = X_train.copy()
-    X_train_new, X_test_new = nursepy.preproc(X_train, X_test, auto=True)
+    X_train_new, X_test_new = preproc.preproc(X_train, X_test, auto=True)
     # one hot encoding should add one column
     assert(len(X_train_new.columns) == len(X_train.columns) + 1)
     # TODO add check to make sure the other columns are scaled

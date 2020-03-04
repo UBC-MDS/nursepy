@@ -2,10 +2,6 @@ import numpy as np
 import pandas as pd
 import altair as alt
 from collections import defaultdict
-from sklearn.pipeline import Pipeline
-from sklearn.impute import SimpleImputer
-from sklearn.preprocessing import StandardScaler, OneHotEncoder, LabelEncoder, StandardScaler, RobustScaler
-from sklearn.compose import ColumnTransformer
 
 
 def eda(input_data):
@@ -22,7 +18,6 @@ def eda(input_data):
     Examples
     --------
     >>> from nursepy import eda
-    >>> np.random.seed(0)
     >>> input_data = pd.DataFrame(np.random.randn(10, 1))
     >>> input_data.columns = ['my_attribute']
     >>> results = eda(input_data)
@@ -39,14 +34,24 @@ def eda(input_data):
               max     1.867558}}
     """
 
+    if not isinstance(input_data, pd.core.frame.DataFrame):
+        raise ValueError('input_data must be instance of pandas.core.frame.DataFrame.')
+
+    if input_data.empty:
+        raise ValueError('input_data should contain at least one axis.')
+
+    if not all(type(col) == str for col in input_data.columns):
+        raise ValueError('All column names should be string.')
+
     eda_summary = defaultdict(dict)
 
     # for each column, calculate altair histogram and descriptive statistics
     for column_name in input_data.columns:
+        suffix = ":O" if str(input_data[column_name].dtype) in ['object', 'bool'] else ":Q"
         column_specific_hist = alt.Chart(input_data).mark_bar().encode(
-            alt.X(column_name + ":Q", bin=True),
+            alt.X(str(column_name) + suffix),
             y='count()'
-        )
+        ).properties(title="The histogram of " + str(column_name))
         eda_summary["histograms"][column_name] = column_specific_hist
 
         column_specific_stats = pd.DataFrame(input_data[column_name].describe())
