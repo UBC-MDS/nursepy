@@ -1,6 +1,7 @@
 from nursepy.impute import impute 
 import numpy as np
 import pandas as pd
+import pytest
 
 
 def random_data():
@@ -54,25 +55,22 @@ def test_blocks():
     Xt1 = Xt.copy()
     Xt1['five'] = 'string'
 
-    try:
+
+    with pytest.raises(Exception) as exc:
         impute(dict(Xt1), yt_c, Xv, yv_c, model_type = 'classification')
-    except Exception as exc:
-        assert(exc.args[0] == 'pandas dataframe objects are required')
-
-    try:
+    assert (str(exc.value) == 'pandas dataframe objects are required')
+        
+    with pytest.raises(Exception) as exc:
         impute(Xt1, yt_c, Xv, yv_c, model_type = 'classification')
-    except Exception as exc:
-        assert(exc.args[0] == 'can only currently accept numeric data')
+    assert (str(exc.value) == 'can only currently accept numeric data')
     
-    try:
+    with pytest.raises(Exception) as exc:
         impute(Xt.dropna(), yt_c, Xv, yv_c, model_type = 'classification')
-    except Exception as exc:
-        assert(exc.args[0] == 'no missing data to impute')
+    assert (str(exc.value) == 'no missing data to impute')
 
-    try:
+    with pytest.raises(Exception) as exc:
         impute(Xt, yt_c, Xv, yv_c, model_type = 'test')
-    except Exception as exc:
-        assert(exc.args[0] == 'unrecognized model type')
+    assert (str(exc.value) == 'unrecognized model type')
     
     return
 
