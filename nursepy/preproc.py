@@ -6,7 +6,7 @@ from sklearn.preprocessing import StandardScaler, OneHotEncoder, LabelEncoder, S
 from sklearn.compose import ColumnTransformer
 
 
-def preproc(X_train, X_test=None, auto=False, OHE=[], standard_scale=[], robust_scale=[], numerical_impute=[], categegorical_impute=[], label_encode={}):
+def preproc(X_train, X_test=None, auto=False, OHE=[], standard_scale=[], robust_scale=[], numerical_impute=[], categorical_impute=[], label_encode={}):
     """
     Preprocesses data frames, including onehot encoding, scaling, and imputation, and label encoding
 
@@ -31,17 +31,38 @@ def preproc(X_train, X_test=None, auto=False, OHE=[], standard_scale=[], robust_
     --------
     >>> X_train, X_test = preproc(X_train, X_test, auto=True)
     """
+    args = locals().copy()
+    arg_types = {
+        'X_train': [type(pd.DataFrame())],
+        'X_test': [type(None), type(pd.DataFrame())],
+        'auto': [type(True)],
+        'OHE': [type([]), type(np.array([]))],
+        'standard_scale': [type([]), type(np.array([]))],
+        'robust_scale': [type([]), type(np.array([]))],
+        'numerical_impute': [type([]), type(np.array([]))],
+        'categorical_impute': [type([]), type(np.array([]))],
+        'label_encode': [type({})]
+    }
+    # check arg types
+    for arg_key in args.keys():
+        argument_type = type(args[arg_key])
+        if argument_type not in arg_types[arg_key]:
+            raise ValueError(
+                f"Arg type error. {arg_key} needs to be one of {arg_types[arg_key]}. You passed in type of: {argument_type}")
 
+    X_train = X_train.copy()
+    if X_test is not None:
+        X_test = X_test.copy()
     # automatically choose which columns to scale and encode
-    if (auto == True):
-        for element in [OHE, standard_scale, robust_scale, numerical_impute, categegorical_impute]:
-            if(len(element) > 0):
+    if auto :
+        for element in [OHE, standard_scale, robust_scale, numerical_impute, categorical_impute]:
+            if len(element) > 0 :
                 raise Exception(
                     f'You cannot manually set {element} when setting auto to true')
         label_keys = label_encode.keys()
-        if (len(label_keys) > 0):
+        if len(label_keys) > 0 :
             raise Exception(
-                'You cannot manually set categegorical_impute when setting auto to true')
+                'You cannot manually set categorical_impute when setting auto to true')
         X_num = X_train.select_dtypes(include=['float64', 'int64'])
         standard_scale = X_num.columns.values
         X_cat = X_train.select_dtypes(
@@ -51,7 +72,7 @@ def preproc(X_train, X_test=None, auto=False, OHE=[], standard_scale=[], robust_
             transformers=[
                 ('cat_imputer',
                     SimpleImputer(strategy='constant', fill_value='missing'),
-                    categegorical_impute
+                    categorical_impute
                  ),
                 ('num_imputer',
                     SimpleImputer(strategy='median'),
@@ -77,7 +98,7 @@ def preproc(X_train, X_test=None, auto=False, OHE=[], standard_scale=[], robust_
             transformers=[
                 ('cat_imputer',
                     SimpleImputer(strategy='constant', fill_value='missing'),
-                    categegorical_impute
+                    categorical_impute
                  ),
                 ('num_imputer',
                     SimpleImputer(strategy='median'),
