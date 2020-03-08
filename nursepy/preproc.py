@@ -56,7 +56,7 @@ def preproc(X_train, X_test=None, auto=False, OHE=[], standard_scale=[], robust_
     # automatically choose which columns to scale and encode
     if (auto == True):
         for element in [OHE, standard_scale, robust_scale, numerical_impute, categorical_impute]:
-            if(len(element) > 0):
+            if len(element) > 0 :
                 raise Exception(
                     f'You cannot manually set {element} when setting auto to true')
         label_keys = label_encode.keys()
