@@ -51,7 +51,7 @@ def preproc(X_train, X_test=None, auto=False, OHE=[], standard_scale=[], robust_
                 f"Arg type error. {arg_key} needs to be one of {arg_types[arg_key]}. You passed in type of: {argument_type}")
 
     X_train = X_train.copy()
-    if (X_test is not None):
+    if X_test is not None:
         X_test = X_test.copy()
     # automatically choose which columns to scale and encode
     if auto :
