@@ -37,6 +37,7 @@ def get_wine():
 
 
 def test_PreprocAuto():
+    # test auto prerpocessing
     X, y = get_wine()
     X['A_FAKE_CAT'] = np.random.choice(['SWEET', 'SOUR', 'TART'], len(y))
     X_train, X_test, y_train, y_test = train_test_split(
