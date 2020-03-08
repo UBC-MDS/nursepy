@@ -54,7 +54,7 @@ def preproc(X_train, X_test=None, auto=False, OHE=[], standard_scale=[], robust_
     if (X_test is not None):
         X_test = X_test.copy()
     # automatically choose which columns to scale and encode
-    if (auto == True):
+    if auto :
         for element in [OHE, standard_scale, robust_scale, numerical_impute, categorical_impute]:
             if len(element) > 0 :
                 raise Exception(
