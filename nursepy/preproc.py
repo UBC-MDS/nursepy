@@ -60,7 +60,7 @@ def preproc(X_train, X_test=None, auto=False, OHE=[], standard_scale=[], robust_
                 raise Exception(
                     f'You cannot manually set {element} when setting auto to true')
         label_keys = label_encode.keys()
-        if (len(label_keys) > 0):
+        if len(label_keys) > 0 :
             raise Exception(
                 'You cannot manually set categorical_impute when setting auto to true')
         X_num = X_train.select_dtypes(include=['float64', 'int64'])
