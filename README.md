@@ -4,7 +4,7 @@
 
 [![Documentation Status](https://readthedocs.org/projects/nursepy/badge/?version=latest)](https://nursepy.readthedocs.io/en/latest/?badge=latest)
 
-Testing CI
+A python package for streamlining the front end of the machine learning workflow.
 
 ### Summary
 
