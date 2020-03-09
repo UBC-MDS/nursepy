@@ -1,6 +1,6 @@
 import pytest
 from nursepy import preproc
-from sklearn.datasets import load_boston, load_iris, load_wine
+from sklearn.datasets import load_boston, load_wine
 import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
@@ -42,7 +42,6 @@ def test_PreprocAuto():
     X['A_FAKE_CAT'] = np.random.choice(['SWEET', 'SOUR', 'TART'], len(y))
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=0.2)
-    X_train_copy = X_train.copy()
     X_train_new, X_test_new = preproc.preproc(X_train, X_test, auto=True)
     # one hot encoding should add one column
     assert(len(X_train_new.columns) == len(X_train.columns) + 1)
@@ -87,9 +86,18 @@ def test_create_ohe():
                         'proanthocyanins', 'color_intensity', 'hue',
                         'od280/od315_of_diluted_wines', 'proline'])
     result_df = X_train
-    assert(np.array_equal(result_df.columns[0:11], ['A_FAKE_CAT_0', 'A_FAKE_CAT_1', 'A_FAKE_CAT_2', 'A_FAKE_CAT_3',
-                                                    'B_FAKE_CAT_0', 'B_FAKE_CAT_1', 'B_FAKE_CAT_2', 'B_FAKE_CAT_3',
-                                                    'C_FAKE_CAT_SOUR', 'C_FAKE_CAT_SWEET', 'C_FAKE_CAT_TART']))
+    assert(np.array_equal(result_df.columns[0:11],
+                          ['A_FAKE_CAT_0',
+                           'A_FAKE_CAT_1',
+                           'A_FAKE_CAT_2',
+                           'A_FAKE_CAT_3',
+                           'B_FAKE_CAT_0',
+                           'B_FAKE_CAT_1',
+                           'B_FAKE_CAT_2',
+                           'B_FAKE_CAT_3',
+                           'C_FAKE_CAT_SOUR',
+                           'C_FAKE_CAT_SWEET',
+                           'C_FAKE_CAT_TART']))
     tc.assertFalse('A_FAKE_CAT' in result_df.columns)
     tc.assertIn(result_df['A_FAKE_CAT_0'][0], [0.0, 1.0])
 
@@ -102,11 +110,22 @@ def test_standard_scaled():
     X['C_FAKE_CAT'] = np.random.choice(['SWEET', 'SOUR', 'TART'], len(y))
     X['D_FAKE_LABEL_CAT'] = np.random.choice(
         ['BAD', 'OK', 'GOOD', 'GREAT'], len(y))
-    result = preproc.preproc(X,
-                             standard_scale=['alcohol', 'malic_acid', 'ash', 'alcalinity_of_ash', 'magnesium',
-                                             'total_phenols', 'flavanoids', 'nonflavanoid_phenols',
-                                             'proanthocyanins', 'color_intensity', 'hue',
-                                             'od280/od315_of_diluted_wines', 'proline'])
+    result = preproc.preproc(
+        X,
+        standard_scale=[
+            'alcohol',
+            'malic_acid',
+            'ash',
+            'alcalinity_of_ash',
+            'magnesium',
+            'total_phenols',
+            'flavanoids',
+            'nonflavanoid_phenols',
+            'proanthocyanins',
+            'color_intensity',
+            'hue',
+            'od280/od315_of_diluted_wines',
+            'proline'])
     result_df = result[0]
     tc.assertAlmostEqual(
         result_df['alcohol'].mean(), result_df['malic_acid'].mean())
@@ -120,6 +139,5 @@ def test_bad_args():
         X['A_FAKE_CAT'] = np.random.choice(['SWEET', 'SOUR', 'TART'], len(y))
         X_train, X_test, y_train, y_test = train_test_split(
             X, y, test_size=0.2)
-        X_train_copy = X_train.copy()
         X_train_new, X_test_new = preproc.preproc(X_train, X_test, auto=[])
     pytest.raises(ValueError, raise_excep)

@@ -1,12 +1,20 @@
 import numpy as np
 import pandas as pd
-from sklearn.pipeline import Pipeline
 from sklearn.impute import SimpleImputer
-from sklearn.preprocessing import StandardScaler, OneHotEncoder, LabelEncoder, StandardScaler, RobustScaler
+from sklearn.preprocessing import StandardScaler, OneHotEncoder, LabelEncoder, RobustScaler
 from sklearn.compose import ColumnTransformer
 
 
-def preproc(X_train, X_test=None, auto=False, OHE=[], standard_scale=[], robust_scale=[], numerical_impute=[], categorical_impute=[], label_encode={}):
+def preproc(
+        X_train,
+        X_test=None,
+        auto=False,
+        OHE=[],
+        standard_scale=[],
+        robust_scale=[],
+        numerical_impute=[],
+        categorical_impute=[],
+        label_encode={}):
     """
     Preprocesses data frames, including onehot encoding, scaling, and imputation, and label encoding
 
@@ -54,13 +62,18 @@ def preproc(X_train, X_test=None, auto=False, OHE=[], standard_scale=[], robust_
     if X_test is not None:
         X_test = X_test.copy()
     # automatically choose which columns to scale and encode
-    if auto :
-        for element in [OHE, standard_scale, robust_scale, numerical_impute, categorical_impute]:
-            if len(element) > 0 :
+    if auto:
+        for element in [
+                OHE,
+                standard_scale,
+                robust_scale,
+                numerical_impute,
+                categorical_impute]:
+            if len(element) > 0:
                 raise Exception(
                     f'You cannot manually set {element} when setting auto to true')
         label_keys = label_encode.keys()
-        if len(label_keys) > 0 :
+        if len(label_keys) > 0:
             raise Exception(
                 'You cannot manually set categorical_impute when setting auto to true')
         X_num = X_train.select_dtypes(include=['float64', 'int64'])
