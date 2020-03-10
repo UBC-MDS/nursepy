@@ -9,7 +9,7 @@ license = "MIT"
 python = "^3.7"
 numpy = "^1.18.1"
 pandas = "^1.0.1"
-altair = "^4.0.1"
+altair = "3.2.0"
 sklearn = "^0.0"
 pytest = "^5.3.5"
 
