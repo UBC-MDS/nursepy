@@ -64,9 +64,9 @@ def test_blocks():
         impute(Xt1, yt_c, Xv, yv_c, model_type='classification')
     assert (str(exc.value) == 'can only currently accept numeric data')
 
-    with pytest.raises(Exception) as exc:
-        impute(Xt.dropna(), yt_c, Xv, yv_c, model_type='classification')
-    assert (str(exc.value) == 'no missing data to impute')
+    # with pytest.raises(Exception) as exc:
+    #     impute(Xt.dropna(), yt_c, Xv, yv_c, model_type='classification')
+    # assert (str(exc.value) == 'no missing data to impute')
 
     with pytest.raises(Exception) as exc:
         impute(Xt, yt_c, Xv, yv_c, model_type='test')
