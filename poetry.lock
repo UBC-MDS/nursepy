@@ -11,8 +11,8 @@ category = "main"
 description = "Altair: A declarative statistical visualization library for Python."
 name = "altair"
 optional = false
-python-versions = ">=3.5"
-version = "4.0.1"
+python-versions = "*"
+version = "3.2.0"
 
 [package.dependencies]
 entrypoints = "*"
@@ -20,10 +20,11 @@ jinja2 = "*"
 jsonschema = "*"
 numpy = "*"
 pandas = "*"
+six = "*"
 toolz = "*"
 
 [package.extras]
-dev = ["docutils", "ipython", "flake8", "pytest", "sphinx", "m2r", "vega-datasets", "recommonmark"]
+dev = ["docutils", "flake8", "pytest", "sphinx", "m2r", "vega-datasets", "recommonmark", "ipython (<6)", "ipython"]
 
 [[package]]
 category = "main"
@@ -651,7 +652,7 @@ docs = ["sphinx", "jaraco.packaging (>=3.2)", "rst.linker (>=1.9)"]
 testing = ["jaraco.itertools", "func-timeout"]
 
 [metadata]
-content-hash = "dd6f7e676107f0683d37d9f29737cd54798388e31922b3107da0589798099dbe"
+content-hash = "ccc8b145e528788f8973f8307050933e77398f6afee84cd0c0e1f2109c8910b7"
 python-versions = "^3.7"
 
 [metadata.files]
@@ -660,8 +661,8 @@ alabaster = [
     {file = "alabaster-0.7.12.tar.gz", hash = "sha256:a661d72d58e6ea8a57f7a86e37d86716863ee5e92788398526d58b26a4e4dc02"},
 ]
 altair = [
-    {file = "altair-4.0.1-py3-none-any.whl", hash = "sha256:aeafbf669caa71e567a3032874a46a1bacf55990e84b683f06c05ae4123c594c"},
-    {file = "altair-4.0.1.tar.gz", hash = "sha256:d31270c82ce5e37b25fc3bc4e990dc6ac593620a2be0c8c075f297409a92af90"},
+    {file = "altair-3.2.0-py2.py3-none-any.whl", hash = "sha256:bd8f42b487ffb67bdb1d2ae7970df69c0801431c9201742599525037bc8bd56d"},
+    {file = "altair-3.2.0.tar.gz", hash = "sha256:9abe13d88a3694857138ac61512c4f873f762f432cf82623eea4700d2a531525"},
 ]
 atomicwrites = [
     {file = "atomicwrites-1.3.0-py2.py3-none-any.whl", hash = "sha256:03472c30eb2c5d1ba9227e4c2ca66ab8287fbfbbda3888aa93dc2e28fc6811b4"},
