@@ -97,11 +97,8 @@ def test_eda_raise_error_when_provided_data_frame_has_non_string_columns():
 
 def get_test_data():
     generated_data = pandas.DataFrame()
-    generated_data['my_attribute_one'] = [0.11258999, -
-                                          0.46470503, -
-                                          0.6239613, 0.34662896, 1.46545937, -
-                                          1.31609441, 1.02121457, 0.97242653, -
-                                          0.47079687, 0.20990854]
+    generated_data['my_attribute_one'] = [0.11258999, -0.46470503, -0.6239613, 0.34662896,
+                                          1.46545937, -1.31609441, 1.02121457, 0.97242653, -0.47079687, 0.20990854]
     generated_data['my_attribute_two'] = [
         "category1",
         "category1",

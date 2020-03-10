@@ -30,7 +30,7 @@ def impute(X_t, y_t, X_v, y_v, model_type='classification'):
     """
     warnings.simplefilter('error', UserWarning)
 
-    if all(isinstance(i, pd.DataFrame) for i in [X_t, y_t, X_v, y_v]) == False:
+    if all(isinstance(i, pd.DataFrame) for i in [X_t, y_t, X_v, y_v]) is False:
         warnings.warn('pandas dataframe objects are required')
         return
 
@@ -40,7 +40,7 @@ def impute(X_t, y_t, X_v, y_v, model_type='classification'):
         return
 
     # check if missing data exists in data
-    if pd.isna(X_t).values.any() == False:
+    if pd.isna(X_t).values.any() is False:
         warnings.warn('no missing data to impute')
         return
 
