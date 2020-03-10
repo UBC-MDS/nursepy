@@ -70,12 +70,11 @@ jobs:
           release_name: ${{ steps.release.outputs.release_tag }}
           draft: false
           prerelease: false
-      - name: Build and publish
-        env:
-          TEST_PYPI_USERNAME: ${{ secrets.TEST_PYPI_USERNAME }}
-          TEST_PYPI_PASSWORD: ${{ secrets.TEST_PYPI_PASSWORD }}
-        run: |
-
-          poetry config repositories.nursepy https://test.pypi.org/legacy/
-          poetry build
-          poetry publish -r nursepy -u $TEST_PYPI_USERNAME -p $TEST_PYPI_PASSWORD
+      # - name: Build and publish
+      #   env:
+      #     TEST_PYPI_USERNAME: ${{ secrets.TEST_PYPI_USERNAME }}
+      #     TEST_PYPI_PASSWORD: ${{ secrets.TEST_PYPI_PASSWORD }}
+      #   run: |
+      #     poetry config repositories.nursepy https://test.pypi.org/legacy/
+      #     poetry build
+      #     poetry publish -r nursepy -u $TEST_PYPI_USERNAME -p $TEST_PYPI_PASSWORD
