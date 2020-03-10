@@ -23,7 +23,7 @@ jobs:
           pip install poetry
           poetry install
       - name: Check style
-        run: poetry run flake8 --ignore=E501 --exclude=docs*
+        run: poetry run flake8 --ignore E501 --exclude=docs*
       - name: Test with pytest
         run: |
           poetry run pytest --cov=./ --cov-report=xml
