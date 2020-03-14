@@ -23,7 +23,7 @@ jobs:
           pip install poetry
           poetry install
       - name: Check style
-        run: poetry run flake8 --exclude=docs*
+        run: poetry run flake8 --ignore E501 --exclude=docs*
       - name: Test with pytest
         run: |
           poetry run pytest --cov=./ --cov-report=xml
@@ -59,7 +59,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
       - name: Enable "include administrators" branch protection
         uses: benjefferies/branch-protection-bot@master
-        if: always()
+        if: always() # Force to always run this step to ensure "include administrators" is always turned back on
         with:
           access-token: ${{ secrets.ACCESS_TOKEN }}
           owner: UBC-MDS
