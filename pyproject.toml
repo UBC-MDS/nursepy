@@ -24,6 +24,7 @@ pytest-cov = "^2.8.1"
 codecov = "^2.0.16"
 flake8 = "^3.7.9"
 autopep8 = "^1.5"
+python-semantic-release = "^4.10.0"
 
 [tool.semantic_release]
 version_variable = "nursepy/__init__.py:__version__"
