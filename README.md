@@ -1,6 +1,6 @@
 ## `nursepy`
 
-![](https://github.com/evhend/nursepy/workflows/build/badge.svg) [![codecov](https://codecov.io/gh/evhend/nursepy/branch/master/graph/badge.svg)](https://codecov.io/gh/evhend/nursepy) ![Release](https://github.com/evhend/nursepy/workflows/Release/badge.svg)
+![](https://github.com/UBC-MDS/nursepy/workflows/build/badge.svg) [![codecov](https://codecov.io/gh/UBC-MDS/nursepy/branch/master/graph/badge.svg)](https://codecov.io/gh/UBC-MDS/nursepy) ![Release](https://github.com/UBC-MDS/nursepy/workflows/Release/badge.svg)
 
 [![Documentation Status](https://readthedocs.org/projects/nursepy/badge/?version=latest)](https://nursepy.readthedocs.io/en/latest/?badge=latest)
 
