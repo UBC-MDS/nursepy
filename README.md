@@ -56,6 +56,32 @@ However, the functions herein streamline and automate the front-end machine lear
 
 ### Usage
 
+#### eda()
+
+```python
+from sklearn.datasets import load_wine
+import pandas as pd
+from nursepy.eda import eda
+wine = load_wine()
+data = pd.DataFrame(wine.data)
+data.columns = wine.feature_names
+
+eda_results = eda(data)
+eda_results['stats']['magnesium']
+```
+![eda-stats](images/eda-stats.png)
+
+```python
+eda_results['histograms']['magnesium']
+```
+
+![eda-hist](images/eda-histogram.png)
+
+
+
+
+
+
 ---
 
 ### Documentation
