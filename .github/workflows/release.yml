@@ -63,7 +63,7 @@ jobs:
         with:
           access-token: ${{ secrets.ACCESS_TOKEN }}
           owner: UBC-MDS
-          repo: pypuck
+          repo: nursepy
       - name: Get release tag version from package version
         run: |
           echo ::set-output name=release_tag::$(grep "version" */__init__.py | cut -d "'" -f 2 | cut -d '"' -f 2)
