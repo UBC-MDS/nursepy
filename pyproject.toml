@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "nursepy"
-version = "3.0.0"
+version = "0.1.6"
 description = "Python package for EDA and preprocessing"
 authors = ["Group 24"]
 license = "MIT"
