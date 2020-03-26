@@ -616,7 +616,7 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*"
 version = "1.14.0"
 
 [[package]]
-category = "main"
+category = "dev"
 description = "A set of python modules for machine learning and data mining"
 name = "sklearn"
 optional = false
@@ -868,7 +868,7 @@ docs = ["sphinx", "jaraco.packaging (>=3.2)", "rst.linker (>=1.9)"]
 testing = ["jaraco.itertools", "func-timeout"]
 
 [metadata]
-content-hash = "59d5639824e77d57c556dba75903bf9de19f73368a7967bd8c70c5fe74ad4b87"
+content-hash = "cfd3ffbb36435d978bfcbcaa16f89fc554cc64bb391ce30c81d505e8fc9edae9"
 python-versions = "^3.7"
 
 [metadata.files]
