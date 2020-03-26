@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "nursepy"
-version = "0.1.5"
+version = "3.0.0"
 description = "Python package for EDA and preprocessing"
 authors = ["Group 24"]
 license = "MIT"
@@ -10,8 +10,8 @@ python = "^3.7"
 numpy = "^1.18.1"
 pandas = "^1.0.1"
 altair = "3.2.0"
-sklearn = "^0.0"
 pytest = "^5.3.5"
+scikit-learn = "^0.22.2"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.3.5"
