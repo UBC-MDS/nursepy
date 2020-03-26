@@ -28,11 +28,12 @@ minimize time and optimize the processing methods used. The functions in
 `nursepy` were developed to provide useful and informative metrics that
 are applicable to a wide array of datasets.
 
-*`nursepy` was developed as part of DSCI 524 of the MDS program at UBC.*
+*`nursepy` was developed as part of DSCI 524 of the MDS program at
+    UBC.*
 
 ### Installation:
 
-    pip install -i https://test.pypi.org/simple/ nursepy
+    pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple nursepy
 
 ### Features
 
@@ -74,14 +75,37 @@ machine learning pipeline for use with any machine learning package.
 
 #### `eda()`
 
+The `eda()` function helps to easily explore the data by both giving
+visual insights and summary statistics for a chosen column.
+
+*Note:*
+
+*- Function should be run in Jupyter Lab (or other IDE) to view output.
+If Jupyter Notebook is used, run
+`altair.renderers.enable('notebook')`*  
+*- Depending on the data set, `alt.data_transformers.disable_max_rows()`
+may be required before running `eda`*
+
+These are required imports:
+
 ``` python
 from sklearn.datasets import load_wine
 import pandas as pd
 from nursepy.eda import eda
+```
+
+To see how this function works, we will load `wine` dataset from
+sklearn.
+
+``` python
 wine = load_wine()
 data = pd.DataFrame(wine.data)
 data.columns = wine.feature_names
+```
 
+After calling the `eda()` function, we will get the following outputs:
+
+``` python
 eda_results = eda(data)
 eda_results['stats']['magnesium']
 ```
@@ -187,11 +211,11 @@ pd.DataFrame({'Method': list(summary['imputation_scores_'].keys()),
 
     ##                 Method     Score
     ## 0            remove_na  0.333333
-    ## 1         forward_fill  0.300000
-    ## 2        backward_fill  0.500000
-    ## 3         feature_mean  0.400000
-    ## 4       feature_median  0.400000
-    ## 5  feature_interpolate  0.500000
+    ## 1         forward_fill  0.400000
+    ## 2        backward_fill  0.300000
+    ## 3         feature_mean  0.300000
+    ## 4       feature_median  0.300000
+    ## 5  feature_interpolate  0.200000
 
 </br>
 
@@ -219,16 +243,16 @@ summary['best_imputed_data_'][0]
 ```
 
     ##         one       two     three      four
-    ## 0 -0.663659 -0.028917  1.293520  0.049379
-    ## 1 -0.325759 -0.097739  0.060026  0.508513
-    ## 2  1.540998  1.815452  0.426086  0.508513
-    ## 3  0.457950  0.134599  1.062041 -0.166707
-    ## 4  0.396133  0.134599  0.010319 -0.166707
-    ## 5 -0.390443  0.134599  0.535794 -0.676043
-    ## 6 -1.562321  1.279724  0.009730 -0.521278
-    ## 7  1.110032  0.044789  0.336294 -0.419905
-    ## 8  1.138027 -0.235265  0.336294 -1.109364
-    ## 9  0.358482  1.195393 -0.357635 -1.949139
+    ## 0 -1.047538  0.042689 -0.247081 -0.363426
+    ## 1 -0.304713  0.800541 -2.626776 -0.363426
+    ## 2  0.327052 -0.755122 -0.505563  0.915825
+    ## 3  0.679104 -0.755122  1.582215  0.915825
+    ## 4 -0.179888 -0.755122  0.857867  1.016828
+    ## 5 -0.085712 -0.774920  0.107280  1.354976
+    ## 6  0.860473  0.029632 -0.979732  1.270861
+    ## 7  0.217099  0.384991 -0.979732 -0.425301
+    ## 8  0.191896 -1.207064  0.105697  0.742878
+    ## 9  0.207372 -0.607005  1.752648 -0.216495
 
 -----
 

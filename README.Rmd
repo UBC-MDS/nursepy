@@ -25,7 +25,7 @@ _`nursepy` was developed as part of DSCI 524 of the MDS program at UBC._
 ### Installation:
 
 ```
-pip install -i https://test.pypi.org/simple/ nursepy
+pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple nursepy
 ```
 
 ### Features
@@ -66,14 +66,32 @@ However, the functions herein streamline and automate the front-end machine lear
 
 #### `eda()`
 
+The `eda()` function helps to easily explore the data by both giving visual insights and summary statistics for a chosen column.   
+
+*Note:*  
+
+*- Function should be run in Jupyter Lab (or other IDE) to view output. If Jupyter Notebook is used, run `altair.renderers.enable('notebook')`*     
+*- Depending on the data set, `alt.data_transformers.disable_max_rows()` may be required before running `eda`*  
+
+These are required imports:  
+
 ```{python}
 from sklearn.datasets import load_wine
 import pandas as pd
 from nursepy.eda import eda
+```
+
+To see how this function works, we will load `wine` dataset from sklearn.    
+
+```{python}
 wine = load_wine()
 data = pd.DataFrame(wine.data)
 data.columns = wine.feature_names
+```
 
+After calling the `eda()` function, we will get the following outputs:  
+
+```{python}
 eda_results = eda(data)
 eda_results['stats']['magnesium']
 ```
