@@ -1,4 +1,3 @@
-
 ## `nursepy` test
 
 ![](https://github.com/UBC-MDS/nursepy/workflows/build/badge.svg)
@@ -13,7 +12,7 @@ workflow.
 
 ### Summary
 
------
+---
 
 Common to the front end of most machine learning pipelines is an
 exploratory data analysis (EDA) and feature preprocessing. EDA’s
@@ -28,7 +27,7 @@ minimize time and optimize the processing methods used. The functions in
 `nursepy` were developed to provide useful and informative metrics that
 are applicable to a wide array of datasets.
 
-*`nursepy` was developed as part of DSCI 524 of the MDS program at UBC.*
+_`nursepy` was developed as part of DSCI 524 of the MDS program at UBC._
 
 ### Installation:
 
@@ -36,7 +35,7 @@ are applicable to a wide array of datasets.
 
 ### Features
 
------
+---
 
 The package includes the following three
 functions:
@@ -49,32 +48,31 @@ functions:
 
 ### Python Ecosystem
 
------
+---
 
 `nursepy` was developed to closely align with:
 
-  - [scikit-learn](https://scikit-learn.org/stable/install.html)
-  - [pandas](https://pandas.pydata.org/)
-  - [numpy](https://numpy.org/)
+- [scikit-learn](https://scikit-learn.org/stable/install.html)
+- [pandas](https://pandas.pydata.org/)
+- [numpy](https://numpy.org/)
 
 However, the functions herein streamline and automate the front-end
 machine learning pipeline for use with any machine learning package.
 
 ### Dependencies
 
------
+---
 
-  - numpy==1.18.1
-  - pandas==0.25.3
-  - sklearn==0.0
-  - altair==3.2.0
-  - pytest==5.3.2
+- numpy==1.18.1
+- pandas==0.25.3
+- altair==3.2.0
+- pytest==5.3.2
 
 ### Usage
 
 #### `eda()`
 
-``` python
+```python
 from sklearn.datasets import load_wine
 import pandas as pd
 from nursepy.eda import eda
@@ -96,13 +94,13 @@ eda_results['stats']['magnesium']
     ## 75%    107.000000
     ## max    162.000000
 
-``` python
+```python
 eda_results['histograms']['magnesium']
 ```
 
 ![eda-hist](images/eda-histogram.png)
 
------
+---
 
 ### `impute`
 
@@ -114,7 +112,7 @@ compute scores for each imputed data set.
 
 Required imports:
 
-``` python
+```python
 from nursepy.impute import impute
 import numpy as np
 import pandas as pd
@@ -123,7 +121,7 @@ import pandas as pd
 To use `impute`, we need a dataset with missing data. Also, this data
 needs to be split into training and test sets. Let’s create our data:
 
-``` python
+```python
 Xt = {'one': np.random.randn(10), 'two': np.random.randn(10),
      'three': np.random.randn(10), 'four': np.random.randn(10)}
 
@@ -151,7 +149,7 @@ Xv = pd.DataFrame(Xv)
 
 Now that that’s over with, let’s call `impute`\!
 
-``` python
+```python
 summary = impute(Xt, yt_c, Xv, yv_c, model_type='classification')
 ```
 
@@ -159,20 +157,20 @@ summary = impute(Xt, yt_c, Xv, yv_c, model_type='classification')
 
 A call to `impute` returns a dictionary with the following keys-values:
 
-  - “imputation\_scores\_”: a dictionary of the 6 imputation methods and
-    their associated `RandomForest` scores
-      - remove\_na  
-      - forward\_fill  
-      - backward\_fill  
-      - feature\_mean  
-      - feature\_median  
-      - feature\_interpolate  
-  - “missing\_value\_counts\_”: a dictionary with feature’s as keys and
-    number of missing values as associated values  
-  - “missing\_indeces\_”: a dictionary with the indeces of rows that
-    contain missing data for the train and test sets  
-  - “best\_imputed\_data\_”: a dataframe with the imputed data of the
-    imputation method with the best score
+- “imputation_scores\_”: a dictionary of the 6 imputation methods and
+  their associated `RandomForest` scores
+  - remove_na
+  - forward_fill
+  - backward_fill
+  - feature_mean
+  - feature_median
+  - feature_interpolate
+- “missing_value_counts\_”: a dictionary with feature’s as keys and
+  number of missing values as associated values
+- “missing_indeces\_”: a dictionary with the indeces of rows that
+  contain missing data for the train and test sets
+- “best_imputed_data\_”: a dataframe with the imputed data of the
+  imputation method with the best score
 
 </br>
 
@@ -180,7 +178,7 @@ We can access the return objects from `impute` by indexing their keys.
 Let’s take a look at the `RandomForestClassifer` scores for each of the
 imputation methods:
 
-``` python
+```python
 pd.DataFrame({'Method': list(summary['imputation_scores_'].keys()),
               'Score': list(summary['imputation_scores_'].values())})
 ```
@@ -198,7 +196,7 @@ pd.DataFrame({'Method': list(summary['imputation_scores_'].keys()),
 The number of missing values in each column can be extracted the same
 way:
 
-``` python
+```python
 pd.DataFrame({'Feature': list(summary['missing_value_counts_'].keys()),
               'Count': list(summary['missing_value_counts_'].values())})
 ```
@@ -211,10 +209,10 @@ pd.DataFrame({'Feature': list(summary['missing_value_counts_'].keys()),
 
 </br>
 
-And finally, let’s extract the training data *(index 0 for training and
-1 for validation)* with the best imputed score:
+And finally, let’s extract the training data _(index 0 for training and
+1 for validation)_ with the best imputed score:
 
-``` python
+```python
 summary['best_imputed_data_'][0]
 ```
 
@@ -230,7 +228,7 @@ summary['best_imputed_data_'][0]
     ## 8  1.138027 -0.235265  0.336294 -1.109364
     ## 9  0.358482  1.195393 -0.357635 -1.949139
 
------
+---
 
 ### `preproc`
 
@@ -239,7 +237,7 @@ and imputation, and label encoding.
 
 Required imports:
 
-``` python
+```python
 from nursepy.preproc import preproc
 import pandas as pd
 from sklearn.datasets import load_wine
@@ -249,7 +247,7 @@ from sklearn.datasets import load_wine
 
 Let’s load some data from sklearn:
 
-``` python
+```python
 wine = load_wine()
 data = pd.DataFrame(wine.data)
 data.columns = wine.feature_names
@@ -260,7 +258,7 @@ data.columns = wine.feature_names
 The output of `preproc` is a tuple with the processed training and test
 sets. Let’s visualize the preprocessed train set:
 
-``` python
+```python
 X_train_processed, X_test_processed = preproc(data)
 X_train_processed
 ```
@@ -277,10 +275,10 @@ X_train_processed
     ## 175    13.27        4.28  2.26  ...  0.59                          1.56    835.0
     ## 176    13.17        2.59  2.37  ...  0.60                          1.62    840.0
     ## 177    14.13        4.10  2.74  ...  0.61                          1.60    560.0
-    ## 
+    ##
     ## [178 rows x 13 columns]
 
------
+---
 
 ### Documentation
 
